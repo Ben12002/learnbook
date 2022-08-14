@@ -10,9 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_12_194124) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_14_013707) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "post_likings", force: :cascade do |t|
+    t.bigint "liker_id"
+    t.bigint "liked_post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["liked_post_id"], name: "index_post_likings_on_liked_post_id"
+    t.index ["liker_id"], name: "index_post_likings_on_liker_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_posts_on_creator_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,4 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_12_194124) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "post_likings", "posts", column: "liked_post_id"
+  add_foreign_key "post_likings", "users", column: "liker_id"
+  add_foreign_key "posts", "users", column: "creator_id"
 end
