@@ -7,5 +7,6 @@ class Post < ApplicationRecord
   has_many :post_likings, foreign_key: :liked_post_id
   has_many :likers, through: :post_likings # source: :liker
 
-
+  # A post has many comments
+  has_many :comments, as: :commentable
 end
