@@ -1,0 +1,19 @@
+<div class="comment">
+    <div>
+        <p><%= comment.creator.username%></p>
+        <p><%= comment.body %></p>
+        <%= link_to "reply", new_post_comment_path(post.id), parent_id: comment.id %> <!-- if is comment is replied to, it will be the parent of the reply. -->
+    </div>
+    
+    <% if defined?(new_comment) %>
+        <% if (new_comment.parent_id == comment.id) %>
+            <p>replying to <%= comment.creator.username %></p>
+            <%= render "shared/comment_form", :post => post, :comment => new_comment, parent_id: comment.id %>
+        <% end %>
+    <% end %>
+    
+    <% comment.comments.each do |child| %>
+        <%= render "comments/comment", :comment => child.comments.first %>
+    <% end %>
+</div>
+

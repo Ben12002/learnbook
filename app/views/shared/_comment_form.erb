@@ -1,0 +1,13 @@
+<%= form_with model: [post, post.comments.build] do |form| %>
+    <%= form.hidden_field :creator_id, value: current_user.id %>
+
+    <% if defined?(parent_id) %>
+        <%= form.hidden_field :parent_id, value: parent_id %>
+    <% else %>
+         <%= form.hidden_field :parent_id, value: nil %>
+    <% end %>
+
+    
+    <%= form.text_area :body %>
+    <%= form.submit %>
+<% end %>

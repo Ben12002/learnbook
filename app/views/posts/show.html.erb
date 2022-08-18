@@ -1,0 +1,11 @@
+<%= render "shared/post", :post => @post %>
+
+<% @post.comments.each do |comment|%>
+    <% if @new_comment %>
+        <%= render "shared/comment", :comment => comment, :post => @post, :new_comment => @new_comment %>
+    <% else %>
+        <%= render "shared/comment", :comment => comment, :post => @post %>
+    <% end %>
+<% end %>
+
+<%= render "shared/comment_form", :post => @post, :comment => @new_top_comment %>

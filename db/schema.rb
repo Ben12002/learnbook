@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_15_152924) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_17_155709) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,10 +19,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_15_152924) do
     t.bigint "creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "parent_id"
     t.string "commentable_type"
     t.bigint "commentable_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["creator_id"], name: "index_comments_on_creator_id"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
   end
 
   create_table "friend_requests", force: :cascade do |t|
@@ -85,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_15_152924) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "users", column: "creator_id"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
