@@ -1,8 +1,22 @@
 <div class="comment">
     <div>
         <p><%= comment.body %></p>
-        <%= link_to "reply", new_post_comment_path(post.id), parent_id: comment.id %>
+        <%= link_to "reply", new_post_comment_path(post.id, parent_id: comment.id) %>
     </div>
+
+    <% if parent_id %>
+        <% if (parent_id.to_i == comment.id.to_i) %>
+            <div>
+                <%= render partial: "shared/comment_form", :locals => { :post => post, parent_id: parent_id } %>
+            </div>
+        <% end %>
+    <% end %>
+
+    <% comment.comments.each do |child| %>
+        <ul class="child">
+            <%= render partial: 'shared/comment', locals: { :post => post, comment: child, parent_id: parent_id } %>
+        </ul>
+    <% end %>
 </div>
 
 

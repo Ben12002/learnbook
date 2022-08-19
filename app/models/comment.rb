@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+  validates :body, :presence => true
 
   # One user can create many comments, each comment belongs to one user
   belongs_to :creator, class_name: "User"

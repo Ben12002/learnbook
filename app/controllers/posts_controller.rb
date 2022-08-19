@@ -11,8 +11,13 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comment = Comment.new
-    # This instantiates an extra comment under a post. Don't tie the comment to the Post yet, even if you're not saving it yet.
+    @parent_id = nil
+
+    # Instead of this, I moved it to _comment_form.html.erb so that a new instance is automatically instantiated
+    # whenever the form is rendered, rather than separately having it in both posts and comments controller.
+    # @comment = Comment.new
+
+    # Don't do this. This instantiates an extra comment under a post. Don't tie the comment to the Post yet, even if you're not saving it yet.
     # @comment = @post.comments.build(creator_id: current_user.id)
   end
 

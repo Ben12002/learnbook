@@ -9,4 +9,9 @@ class Post < ApplicationRecord
 
   # A post has many comments
   has_many :comments, as: :commentable, :dependent => :destroy
+
+
+  def top_level_comments
+    self.comments.where(parent_id: nil)
+  end
 end

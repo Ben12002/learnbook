@@ -2,14 +2,13 @@ class CommentsController < ApplicationController
  
   def new
     @post = Post.find(params[:post_id])
-    # @new_top_comment = @post.comments.build(creator_id: current_user.id)
-    if params[:parent]
-      @replied_comment_id = params[:parent_id] 
-      # @new_comment = @post.comments.build(creator_id: current_user.id, parent_id: @replied_comment_id)
-      render "post/show"
+
+    if params[:parent_id]
+      @parent_id = params[:parent_id]
     else
-      redirect_to @post
-    end
+      @parent_id = nil
+    end 
+    render "posts/show"
   end
 
   def create
