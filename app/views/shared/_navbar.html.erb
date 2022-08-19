@@ -1,0 +1,15 @@
+<div class="navbar">
+      <%= link_to root_path do %>
+  			<h1>LearnBook</h1>
+  		<% end %>
+
+      <% if user_signed_in? %>
+        <%= link_to current_user.username, edit_user_registration_path  %>
+        <!-- https://github.com/heartcombo/devise/issues/5458 redirecting after logout with devise -->
+        <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %>
+      <% else %>
+        <%= link_to "Sign in", user_session_path  %>
+        <%= link_to "Sign up", new_user_registration_path  %>
+      <% end %>  
+</div>
+

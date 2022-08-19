@@ -1,5 +1,6 @@
 <div class="comment">
     <div>
+        <p><%= comment.creator.username %><p>
         <p><%= comment.body %></p>
         <%= link_to "reply", new_post_comment_path(post.id, parent_id: comment.id) %>
     </div>

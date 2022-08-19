@@ -20,8 +20,8 @@ class User < ApplicationRecord
   # Each user can have many friends and can be a friend to many users
   # Since a friendship goes both ways, each friendship requires 2 rows.
   # Since 2 rows,need to be deleted, handle deletion manually in controller instead of using , :dependent => :destroy ?
-  has_many :friendships
-  has_many :friends, through: :friendships
+  has_many :friendships, :dependent => :destroy
+  has_many :friends, through: :friendships, source: :user
 
   # A user has many sent friend requests
   has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: :sender, :dependent => :destroy

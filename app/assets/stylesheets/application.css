@@ -14,11 +14,60 @@
  *= require_self
  */
 
- .post {
-     border: solid 1px darkblue;
-     padding: 5px;
-     margin: 10px;
+ html, body, div, span, applet, object, iframe,
+ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+ a, abbr, acronym, address, big, cite, code,
+ del, dfn, em, img, ins, kbd, q, s, samp,
+ small, strike, strong, sub, sup, tt, var,
+ b, u, i, center,
+ dl, dt, dd, ol, ul, li,
+ fieldset, form, label, legend,
+ table, caption, tbody, tfoot, thead, tr, th, td,
+ article, aside, canvas, details, embed, 
+ figure, figcaption, footer, header, hgroup, 
+ menu, nav, output, ruby, section, summary,
+ time, mark, audio, video {
+	 margin: 0;
+	 padding: 0;
+	 border: 0;
+	 font-size: 100%;
+	 font: inherit;
+	 vertical-align: baseline;
  }
+
+
+/* HTML5 display-role reset for older browsers */
+ article, aside, details, figcaption, figure, 
+ footer, header, hgroup, menu, nav, section {
+	 display: block;
+ }
+
+ body {
+    line-height: 1;
+ }
+
+ .navbar {
+    height: 50px;
+    background-color: #27272a;
+    display: flex;
+    margin-bottom: 100px;
+    color: #f1f5f9;
+    align-items: center;
+    padding: 0px 20px;
+    justify-content: space-between;
+ }
+
+ .navbar > a {
+    text-decoration: none;
+    color: inherit;
+ }
+
+ .post {
+    border: solid 1px darkblue;
+    padding: 5px;
+    margin: 10px;
+ }
+
 
  .comment {
      border: solid 1px gray;
@@ -57,3 +106,5 @@
      font-size: small;
      color: darkblue;
  }
+
+ 
