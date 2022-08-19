@@ -1,4 +1,4 @@
-<%= form_with model: [post, post.comments.build] do |form| %>
+<%= form_with model: [post, comment] do |form| %>
     <%= form.hidden_field :creator_id, value: current_user.id %>
 
     <% if defined?(parent_id) %>

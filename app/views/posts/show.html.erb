@@ -2,9 +2,7 @@
 
 <%= link_to "home", root_path %>
 <%= render "shared/post", :post => @post %>
-<%= render "shared/comment_form", :post => @post, :replied_comment_id => @replied_comment_id %>
-
-
+<%= render "shared/comment_form", :post => @post, :replied_comment_id => @replied_comment_id, :comment => @comment %>
 
 <% @post.comments.each do |comment|%>
     <% if @replied_comment_id %>
