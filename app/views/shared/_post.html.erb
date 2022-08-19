@@ -1,9 +1,4 @@
 <div class="post">
-    <div class="likes">
-        <!-- Like button here-->
-        <%= post.likers.length%>
-    </div>
-
     <div class="user-info">
         <div>
             <%= post.creator.username %>
@@ -11,16 +6,19 @@
     </div>
 
     <div class="title">
-         <%= link_to post.title, post %>
+         <h2><%= link_to post.title, post %></h2>
     </div>
 
     <div class="content">
         <%= post.body %>
     </div>
 
-    <div class="comment">
-        <!-- comment button here -->
-        <%= post.comments.length %>
-    <div>
+    <div class="comments">
+        <p><%= post.comments.length %> comments </p>
+    </div>
+
+    <div class="likes">
+        <p><%= post.likers.length%> likes </p>
+    </div>
 </div>
 

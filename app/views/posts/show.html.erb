@@ -1,11 +1,18 @@
+<h1>Posts#show</h1>
+
+<%= link_to "home", root_path %>
 <%= render "shared/post", :post => @post %>
+<%= render "shared/comment_form", :post => @post, :replied_comment_id => @replied_comment_id %>
+
+
 
 <% @post.comments.each do |comment|%>
-    <% if @new_comment %>
-        <%= render "shared/comment", :comment => comment, :post => @post, :new_comment => @new_comment %>
+    <% if @replied_comment_id %>
+        <%= render "shared/comment", { :comment => comment, :post => @post, :replied_comment_id => @replied_comment_id } %>
     <% else %>
-        <%= render "shared/comment", :comment => comment, :post => @post %>
+        <%= render "shared/comment", { :comment => comment, :post => @post, :replied_comment_id => nil } %>
     <% end %>
 <% end %>
 
-<%= render "shared/comment_form", :post => @post, :comment => @new_top_comment %>
+
+

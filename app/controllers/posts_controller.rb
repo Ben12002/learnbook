@@ -11,7 +11,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @new_top_comment = @post.comments.build(creator_id: current_user.id)
+
+    # This instantiates an extra comment under a post?
+    # @new_top_comment = @post.comments.build(creator_id: current_user.id)
   end
 
   def new

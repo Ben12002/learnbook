@@ -1,6 +1,10 @@
 <h1> Post#Index </h1>
 <%= link_to "New Post", new_post_path %>
 
-<% @posts.each do |post| %>
-    <%= render "shared/post", :post => post %>
-<% end %>
+<ul>
+    <% @posts.each do |post| %>
+        <li>
+            <%= render "shared/post", :post => post %>
+        </li>
+    <% end %>
+</ul>
