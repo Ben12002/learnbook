@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_17_155709) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_21_143036) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,13 +45,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_17_155709) do
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
-  create_table "post_likings", force: :cascade do |t|
+  create_table "likes", force: :cascade do |t|
+    t.string "likeable_type"
+    t.bigint "likeable_id"
     t.bigint "liker_id"
-    t.bigint "liked_post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["liked_post_id"], name: "index_post_likings_on_liked_post_id"
-    t.index ["liker_id"], name: "index_post_likings_on_liker_id"
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["liker_id"], name: "index_likes_on_liker_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -91,8 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_17_155709) do
   add_foreign_key "comments", "users", column: "creator_id"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
-  add_foreign_key "post_likings", "posts", column: "liked_post_id"
-  add_foreign_key "post_likings", "users", column: "liker_id"
+  add_foreign_key "likes", "users", column: "liker_id"
   add_foreign_key "posts", "users", column: "creator_id"
   add_foreign_key "profiles", "users"
 end

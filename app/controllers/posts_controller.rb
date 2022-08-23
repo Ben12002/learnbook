@@ -6,7 +6,14 @@ class PostsController < ApplicationController
     # else
     #   @posts = get_recent_posts
     # end
-    @posts = Post.all
+
+    if params[:user_id] # users/posts
+      @user = User.find(params[:user_id])
+      @posts = @user.created_posts
+      render "users/posts"
+    else # posts
+      @posts = Post.all 
+    end
   end
 
   def show

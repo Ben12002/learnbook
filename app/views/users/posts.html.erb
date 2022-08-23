@@ -1,0 +1,6 @@
+<%= turbo_frame_tag "profile-window" do %>
+    <h1>_posts</h1>
+    <% @posts.each do |post| %>
+        <%= render "shared/post", post: post%>
+    <% end %>
+<% end %>

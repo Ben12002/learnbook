@@ -1,0 +1,12 @@
+<div class="profile-banner">
+</div>
+
+<div class = "tabs-bar">
+    <%= link_to "Profile", @user, data: { turbo_frame: "profile-window" } %>
+    <%= link_to "Comments", user_comments_path(@user.id), data: { turbo_frame: "profile-window" } %>
+    <%= link_to "Posts", user_posts_path(@user.id), data: { turbo_frame: "profile-window" } %>
+</div>
+
+<%= turbo_frame_tag "profile-window" do %>
+    <%= render "users/profile", user: @user %>
+<% end %>

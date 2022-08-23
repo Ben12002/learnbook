@@ -107,4 +107,9 @@
      color: darkblue;
  }
 
+ .liked {
+     background-color: red;
+     color: red;
+ }
+
  

@@ -1,4 +1,27 @@
 <div class="post">
+
+    <div class="likes">
+        <%= turbo_frame_tag "likes" do %>
+
+            <p><%= post.likers.length%> likes </p>
+
+            <% if post.likes.exists?(liker_id: current_user.id, likeable_type: "Post", likeable_id: post.id) %>
+                <%= button_to like_url(Like.where(liker_id: current_user.id, likeable_type: "Post", likeable_id: post.id).first.id, :likeable_id => post.id, :likeable_type => "Post"), {method: :delete} do %>
+                    <svg class="liked" style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M15,20H9V12H4.16L12,4.16L19.84,12H15V20Z" />
+                    </svg>
+                <% end %>
+            <% else %>
+                <%= button_to likes_url(:likeable_id => post.id, :likeable_type => "Post"), {method: :post} do %>
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M15,20H9V12H4.16L12,4.16L19.84,12H15V20Z" />
+                    </svg>
+                <% end %>
+            <% end %>
+
+        <% end %>
+    </div>
+
     <div class="user-info">
         <div>
             <%= post.creator.username %>
@@ -15,10 +38,6 @@
 
     <div class="comments">
         <p><%= post.comments.length %> comments </p>
-    </div>
-
-    <div class="likes">
-        <p><%= post.likers.length%> likes </p>
     </div>
 </div>
 

@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "likes">
+    <p><%= post.likers.length%> likes </p>
+    <% if post.likes.exists?(liker_id: current_user.id, likeable_type: "Post", likeable_id = post.id) %>
+        <%= link_to like_path, method: :delete do %>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M15,20H9V12H4.16L12,4.16L19.84,12H15V20Z" />
+            </svg>
+        <% end %>
+    <% else %>
+        <%= link_to likes_path, method: :post do %>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M15,20H9V12H4.16L12,4.16L19.84,12H15V20Z" />
+            </svg>
+        <% end %>
+    <% end% >
+<% end %>

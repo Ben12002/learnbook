@@ -1,5 +1,12 @@
 class CommentsController < ApplicationController
  
+  # Accessed from /user/comments
+  def index
+    @user = User.find(params[:user_id])
+    @comments = @user.created_comments
+    render "users/comments"
+  end
+  
   def new
     @post = Post.find(params[:post_id])
 

@@ -10,4 +10,8 @@ class Comment < ApplicationRecord
   # A comment has many comments
   has_many :comments, foreign_key: "parent_id", :dependent => :destroy
   belongs_to :parent, class_name: "Comment", optional: true
+
+  # A comment can be liked; therefore it has many likes
+  has_many :likes, as: :likeable, :dependent => :destroy
+  has_many :likers, through: :likes
 end
