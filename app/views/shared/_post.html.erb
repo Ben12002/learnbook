@@ -28,13 +28,19 @@
         </div>
     </div>
 
-    <div class="title">
-         <h2><%= link_to post.title, post %></h2>
-    </div>
+    <%= turbo_frame_tag "edit-post" do %>
+        <div class="title">
+            <h2><%= link_to post.title, post %></h2>
+        </div>
 
-    <div class="content">
-        <%= post.body %>
-    </div>
+        <div class="content">
+            <%= post.body %>
+        </div>
+
+        <% if current_user.id.to_i == post.creator.id.to_i %>
+            <%= link_to "edit", edit_post_path(post.id) %>
+        <% end %>
+    <% end %>
 
     <div class="comments">
         <p><%= post.comments.length %> comments </p>

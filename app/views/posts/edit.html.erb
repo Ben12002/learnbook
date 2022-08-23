@@ -1,2 +1,4 @@
 <h1> Post#Edit </h1>
-<%= render "posts/post_form">
+<%= turbo_frame_tag "edit-post" do %>
+    <%= render "posts/post_form" %>
+<% end %>
