@@ -33,9 +33,19 @@ class CommentsController < ApplicationController
 
   def edit
     @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @parent_id = @comment.parent_id
   end
 
   def update
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+
+    if @comment.update(comment_params)
+      redirect_to @post
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
