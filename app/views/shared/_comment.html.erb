@@ -1,12 +1,26 @@
 <div class="comment">
-    <%= turbo_frame_tag "comment" do %>
+
+    <!-- dom_id(comment) + "likes" is just used as a way to generate a unique ID that won't clash with the edit comment's turbo frame ID -->
+    <!-- This was necessary due to the recursive nature of this view partial -->
+    <div class="likes">
+        <%= turbo_frame_tag (dom_id(comment) + "likes") do %>
+            <%= render "shared/like_dislike_panel", { likeable: comment, dislikeable: comment } %>
+        <% end %>
+    </div>
+
+    <%= turbo_frame_tag dom_id(comment) do %>
         <p><%= comment.creator.username %><p>
         <p><%= comment.body %></p>
-        <%= link_to "reply", new_post_comment_path(post.id, parent_id: comment.id) %>
+        <%= link_to "reply", new_post_comment_path(post.id, parent_id: comment.id), data: { turbo_frame: "_top" } %>
         <% if current_user.id.to_i == comment.creator.id.to_i %>
             <%= link_to "edit", edit_post_comment_path(post.id, comment.id) %>
         <% end %>
-   <% end %>
+    <% end %>
+
+    
+    <p> parent_id: <%= parent_id %> </p>
+    <p> comment.id: <%= comment.id %> </p>
+    
 
     <% if parent_id %>
         <% if (parent_id.to_i == comment.id.to_i) %>

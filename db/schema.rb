@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_21_143036) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_23_201426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_21_143036) do
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["creator_id"], name: "index_comments_on_creator_id"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
+  end
+
+  create_table "dislikes", force: :cascade do |t|
+    t.string "dislikeable_type"
+    t.bigint "dislikeable_id"
+    t.bigint "disliker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dislikeable_type", "dislikeable_id"], name: "index_dislikes_on_dislikeable"
+    t.index ["disliker_id"], name: "index_dislikes_on_disliker_id"
   end
 
   create_table "friend_requests", force: :cascade do |t|
@@ -90,6 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_21_143036) do
 
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "users", column: "creator_id"
+  add_foreign_key "dislikes", "users", column: "disliker_id"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "likes", "users", column: "liker_id"

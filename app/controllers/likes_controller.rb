@@ -1,8 +1,5 @@
 class LikesController < ApplicationController
 
-  def show
-  end
-
   def create
     current_user.likes.create(likeable_id: params[:likeable_id], likeable_type: params[:likeable_type])
     
@@ -10,7 +7,7 @@ class LikesController < ApplicationController
     if params[:likeable_type] == "Post"
       redirect_to Post.find(params[:likeable_id])
     else
-      redirect_to Comment.find(params[:likeable_id])
+      redirect_to Comment.find(params[:likeable_id]).commentable
     end
   end
 
@@ -21,7 +18,7 @@ class LikesController < ApplicationController
     if params[:likeable_type] == "Post"
       redirect_to Post.find(params[:likeable_id])
     else
-      redirect_to Comment.find(params[:likeable_id])
+      redirect_to Comment.find(params[:likeable_id]).commentable
     end
   end
 end

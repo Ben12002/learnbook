@@ -32,4 +32,7 @@ class User < ApplicationRecord
 
   # A user can like many comments/posts (likeables)
   has_many :likes, foreign_key: :liker_id, :dependent => :destroy
+
+  # A user can like many comments/posts (likeables)
+  has_many :dislikes, foreign_key: :disliker_id, :dependent => :destroy
 end

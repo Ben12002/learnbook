@@ -2,7 +2,7 @@
 
     <div class="likes">
         <%= turbo_frame_tag "likes" do %>
-            <%= render "shared/like_dislike_panel", { likeable: post }%>
+            <%= render "shared/like_dislike_panel", { likeable: post, dislikeable: post }%>
         <% end %>
     </div>
 
@@ -14,7 +14,7 @@
 
     <%= turbo_frame_tag "edit-post" do %>
         <div class="title">
-            <h2><%= link_to post.title, post %></h2>
+            <h2><%= link_to post.title, post, data: { turbo_frame: "_top" } %></h2>
         </div>
 
         <div class="content">

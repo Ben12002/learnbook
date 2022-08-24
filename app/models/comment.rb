@@ -14,4 +14,8 @@ class Comment < ApplicationRecord
   # A comment can be liked; therefore it has many likes
   has_many :likes, as: :likeable, :dependent => :destroy
   has_many :likers, through: :likes
+
+  # A comment can be disliked; therefore it has many dislikes
+  has_many :dislikes, as: :dislikeable, :dependent => :destroy
+  has_many :dislikers, through: :dislikes
 end
