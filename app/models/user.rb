@@ -35,4 +35,7 @@ class User < ApplicationRecord
 
   # A user can like many comments/posts (likeables)
   has_many :dislikes, foreign_key: :disliker_id, :dependent => :destroy
+
+  # A user can be either the sender or receiver of many notifications
+  has_many :received_notifications, foreign_key: :receiver_id, class_name: "Notification"
 end

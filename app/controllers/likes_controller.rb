@@ -5,10 +5,20 @@ class LikesController < ApplicationController
     
     # Stand in until I get redirect_back to work
     if params[:likeable_type] == "Post"
-      redirect_to Post.find(params[:likeable_id])
+      link = post_path(params[:likeable_id])
+      type = :like_post
+      post = Post.find(params[:likeable_id])
+      Notification.create_and_send(current_user, post.creator, type, link)
+      redirect_to post
     else
-      redirect_to Comment.find(params[:likeable_id]).commentable
+      comment = Comment.find(params[:likeable_id])
+      link = post_comments_path(@comment.commentable_id, @comment.id)
+      type = :like_comment
+      Notification.create_and_send(current_user, comment.creator, type, link)
+      redirect_to comment.commentable
     end
+
+    
   end
 
   def destroy
