@@ -1,0 +1,4 @@
+<div>
+    <%= link_to user.username, user %>
+    <%= button_to "Add Friend", friendships_path(current_user.id, receiver_id: user.id), {method: :post} %>
+</div>

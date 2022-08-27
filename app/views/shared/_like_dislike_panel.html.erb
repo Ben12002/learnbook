@@ -1,33 +1,34 @@
+<div class="like_dislike_panel">
+    <p><%= likeable.likers.length %> likes </p>
 
-<p><%= likeable.likers.length %> likes </p>
-
-<% if likeable.likes.exists?(liker_id: current_user.id, likeable_type: likeable.class.name, likeable_id: likeable.id) %>
-    <%= button_to like_url(Like.where(liker_id: current_user.id, likeable_type: likeable.class.name, likeable_id: likeable.id).first.id, :likeable_id => likeable.id, :likeable_type => likeable.class.name), {method: :delete} do %>
-        <svg class="liked" style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M15,20H9V12H4.16L12,4.16L19.84,12H15V20Z" />
-        </svg>
+    <% if likeable.likes.exists?(liker_id: current_user.id, likeable_type: likeable.class.name, likeable_id: likeable.id) %>
+        <%= button_to like_url(Like.where(liker_id: current_user.id, likeable_type: likeable.class.name, likeable_id: likeable.id).first.id, :likeable_id => likeable.id, :likeable_type => likeable.class.name), {method: :delete} do %>
+            <svg class="liked" style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M15,20H9V12H4.16L12,4.16L19.84,12H15V20Z" />
+            </svg>
+        <% end %>
+    <% else %>
+        <%= button_to likes_url(:likeable_id => likeable.id, :likeable_type => likeable.class.name), {method: :post} do %>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M15,20H9V12H4.16L12,4.16L19.84,12H15V20Z" />
+            </svg>
+        <% end %>
     <% end %>
-<% else %>
-    <%= button_to likes_url(:likeable_id => likeable.id, :likeable_type => likeable.class.name), {method: :post} do %>
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M15,20H9V12H4.16L12,4.16L19.84,12H15V20Z" />
-        </svg>
-    <% end %>
-<% end %>
 
 
-<p><%= dislikeable.dislikers.length %> dislikes </p>
+    <p><%= dislikeable.dislikers.length %> dislikes </p>
 
-<% if dislikeable.dislikes.exists?(disliker_id: current_user.id, dislikeable_type: dislikeable.class.name, dislikeable_id: dislikeable.id) %>
-    <%= button_to dislike_url(Dislike.where(disliker_id: current_user.id, dislikeable_type: dislikeable.class.name, dislikeable_id: dislikeable.id).first.id, :dislikeable_id => dislikeable.id, :dislikeable_type => dislikeable.class.name), {method: :delete} do %>
-        <svg class="disliked" style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M9,4H15V12H19.84L12,19.84L4.16,12H9V4Z" />
-        </svg>
+    <% if dislikeable.dislikes.exists?(disliker_id: current_user.id, dislikeable_type: dislikeable.class.name, dislikeable_id: dislikeable.id) %>
+        <%= button_to dislike_url(Dislike.where(disliker_id: current_user.id, dislikeable_type: dislikeable.class.name, dislikeable_id: dislikeable.id).first.id, :dislikeable_id => dislikeable.id, :dislikeable_type => dislikeable.class.name), {method: :delete} do %>
+            <svg class="disliked" style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M9,4H15V12H19.84L12,19.84L4.16,12H9V4Z" />
+            </svg>
+        <% end %>
+    <% else %>
+        <%= button_to dislikes_url(:dislikeable_id => dislikeable.id, :dislikeable_type => dislikeable.class.name), {method: :post} do %>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M9,4H15V12H19.84L12,19.84L4.16,12H9V4Z" />
+            </svg>
+        <% end %>
     <% end %>
-<% else %>
-    <%= button_to dislikes_url(:dislikeable_id => dislikeable.id, :dislikeable_type => dislikeable.class.name), {method: :post} do %>
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M9,4H15V12H19.84L12,19.84L4.16,12H9V4Z" />
-        </svg>
-    <% end %>
-<% end %>
+</div>

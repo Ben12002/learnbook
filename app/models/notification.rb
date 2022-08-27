@@ -15,4 +15,9 @@ class Notification < ApplicationRecord
     message = "#{sender.username} #{MESSAGES[type]}"
     receiver.received_notifications.create(sender_id: sender.id, message: message, link: link)
   end
+
+  def set_to_seen
+    self.seen = true
+    self.save
+  end
 end

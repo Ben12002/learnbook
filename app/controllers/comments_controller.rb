@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:notice] = "Successfully commented"
-      type = params[:parent_id] ? :replied_comment, :comment
+      type = params[:parent_id] ? :replied_comment : :comment
       link = post_comments_path(params[:post_id], @comment.id)
       Notification.create_and_send(current_user, @post.creator, type, link)
     else

@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     resources :comments, only: [:index]
     resources :posts, only: [:index]
+    resources :notifications, only: [:index]
   end
+
+  resources :friendships, only: [:index, :create, :update, :destroy]
 
   resources :likes, only: [:create, :destroy]
 

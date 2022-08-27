@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
   after_create do |user|
-    Profile.new(user_id: user.id)
+    Profile.create(user_id: user.id)
   end
 
   # Include default devise modules. Others available are:
@@ -18,18 +18,6 @@ class User < ApplicationRecord
   # One user has one profile
   has_one :profile, :dependent => :destroy
 
-  # Each user can have many friends and can be a friend to many users
-  # Since a friendship goes both ways, each friendship requires 2 rows.
-  # Since 2 rows need to be deleted, handle deletion manually in controller instead of using :dependent => :destroy ?
-  has_many :friendships, :dependent => :destroy
-  has_many :friends, through: :friendships, source: :user
-
-  # A user has many sent friend requests
-  has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: :sender, :dependent => :destroy
-
-  # A user has many received friend requests
-  has_many :received_friend_requests, class_name: "FriendRequest", foreign_key: :receiver, :dependent => :destroy
-
   # A user can like many comments/posts (likeables)
   has_many :likes, foreign_key: :liker_id, :dependent => :destroy
 
@@ -37,5 +25,22 @@ class User < ApplicationRecord
   has_many :dislikes, foreign_key: :disliker_id, :dependent => :destroy
 
   # A user can be either the sender or receiver of many notifications
-  has_many :received_notifications, foreign_key: :receiver_id, class_name: "Notification"
+  has_many :sent_notifications, foreign_key: :sender_id, class_name: "Notification", :dependent => :destroy
+  has_many :received_notifications, foreign_key: :receiver_id, class_name: "Notification", :dependent => :destroy
+  
+  # Friend requests
+  has_many :sent_friend_requests, ->{ where pending: true}, class_name: "Friendship", foreign_key: :sender_id
+  has_many :received_friend_requests, ->{ where pending: true}, class_name: "Friendship", foreign_key: :receiver_id
+
+  # Each user can have many friends and can be a friend to many users
+  # https://stackoverflow.com/questions/37244283/how-to-model-a-mutual-friendship-in-rails
+  has_many :sent_friendships, ->{ where pending: false}, :dependent => :destroy, class_name: "Friendship", foreign_key: :sender_id
+  has_many :received_friendships, ->{ where pending: false}, :dependent => :destroy, class_name: "Friendship", foreign_key: :receiver_id
+
+  has_many :sent_friends, :through => :sent_friendships, source: :receiver
+  has_many :received_friends, :through => :received_friendships, source: :sender
+
+  def friends
+    sent_friends + received_friends
+  end
 end

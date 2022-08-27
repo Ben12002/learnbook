@@ -1,0 +1,45 @@
+<h1>Received Friend Requests:</h1>
+
+<ul>
+    <% @received_friend_requests.each do |received_friend_request| %>
+        <li>
+            <%= render "friendships/received_friend_request", received_friend_request: received_friend_request %>
+        </li>
+    <% end %>
+</ul>
+
+<br>
+
+<h1>Sent Friend Requests:</h1>
+
+<ul>
+    <% @sent_friend_requests.each do |sent_friend_request| %>
+        <li>
+            <%= render "friendships/sent_friend_request", sent_friend_request: sent_friend_request %>
+        </li>
+    <% end %>
+</ul>
+
+<br>
+
+<h1>Friends:</h1>
+
+<ul>
+    <% @friends.each do |friend| %>
+        <li>
+            <%= render "friendships/friend", friend: friend %>
+        </li>
+    <% end %>
+</ul>
+
+<br>
+
+<h1>Discover Users:</h1>
+
+<ul>   
+    <% @users.each do |user| %>
+        <li>
+            <%= render "friendships/discover_user", user: user%>
+        </li>
+    <% end %>
+</ul>

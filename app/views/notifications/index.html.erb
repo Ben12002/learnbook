@@ -1,0 +1,13 @@
+<ul class="notification">
+    <% @notifications.each do |notification| %>
+        <% if notification.seen %>
+            <li class="seen">
+                <%= render "notifications/notification", notification: notification%>
+            </li>
+        <% else %>
+            <li class="unseen">
+                <%= render "notifications/notification", notification: notification%>
+            </li>
+        <% end %>
+    <% end %>
+</ul>

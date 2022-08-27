@@ -1,15 +1,17 @@
-<% if defined?(comment) %>
-    <%= form_with model: [post, comment] do |form| %>
-        <%= form.hidden_field :creator_id, value: current_user.id %>
-        <%= form.hidden_field :parent_id, value: parent_id %>
-        <%= form.text_area :body %>
-        <%= form.submit %>
+<div class="comment_form">
+    <% if defined?(comment) %>
+        <%= form_with model: [post, comment] do |form| %>
+            <%= form.hidden_field :creator_id, value: current_user.id %>
+            <%= form.hidden_field :parent_id, value: parent_id %>
+            <%= form.text_area :body %>
+            <%= form.submit %>
+        <% end %>
+    <% else %>
+        <%= form_with model: [post, Comment.new] do |form| %>
+            <%= form.hidden_field :creator_id, value: current_user.id %>
+            <%= form.hidden_field :parent_id, value: parent_id %>
+            <%= form.text_area :body %>
+            <%= form.submit %>
+        <% end %>
     <% end %>
-<% else %>
-    <%= form_with model: [post, Comment.new] do |form| %>
-        <%= form.hidden_field :creator_id, value: current_user.id %>
-        <%= form.hidden_field :parent_id, value: parent_id %>
-        <%= form.text_area :body %>
-        <%= form.submit %>
-    <% end %>
-<% end %>
+</div>

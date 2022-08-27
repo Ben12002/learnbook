@@ -14,6 +14,8 @@
  *= require_self
  */
 
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;400&family=Poppins:wght@100;200;300&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,100&display=swap');
+
  html, body, div, span, applet, object, iframe,
  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
  a, abbr, acronym, address, big, cite, code,
@@ -44,6 +46,7 @@
 
  body {
     line-height: 1;
+    font-family: 'Noto Sans', sans-serif;
  }
 
  .navbar {
@@ -57,29 +60,12 @@
     justify-content: space-between;
  }
 
- .navbar > a {
+ a {
     text-decoration: none;
     color: inherit;
  }
 
- .post {
-    border: solid 1px darkblue;
-    padding: 5px;
-    margin: 10px;
- }
-
-
- .comment {
-     border: solid 1px gray;
-     padding: 15px;
-     margin: 5px;
-     margin-left: 50px;
-     width: max-content;
-     padding-left: 60px;
-     padding-right: 60px;
- }
-
- form {
+ .comment_form form {
      margin: 15px;
      display: flex;
      flex-direction: column;
@@ -98,14 +84,18 @@
      padding: 10px;
  }
 
- .content {
-     font-size: 20px;
- }
-
  .comments, .likes {
      font-size: small;
      color: darkblue;
  }
+
+ button {
+     appearance: none;
+     background: none;
+     border: none;
+ }
+
+ /* ------------------- _like_dislike_panel.html.erb ------------------------ */
 
  .liked {
      color: red;
@@ -115,4 +105,79 @@
     color: blue;
 }
 
- 
+/* ------------------- _post.html.erb ------------------------ */
+.post {
+    display: grid;
+    grid-template-columns: 1fr, 10fr;
+    grid-template-rows: 2fr, 6fr, 1fr;
+    grid-row-gap: 10px;
+
+    border-radius: 8px;
+
+    margin: 10px;
+    padding: 10px;
+    width: 400px;
+
+    color: white;
+    background-color: #2A313F;
+}
+
+.post #likes {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+
+    /* background-color: #334155; */
+    border: 1px solid #2A313F;
+    width: min-content;
+
+    font-size: 0.5rem;
+}
+
+.post .user-info {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+
+    background-color: #2A313F;
+
+    font-size: 0.6rem;
+}
+
+.post #edit-post {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+
+    background-color: #2A313F;
+}
+
+.post .bottom-bar {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+
+    background-color: #2A313F;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.6rem;
+}
+
+.post .title {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.post .body {
+    font-size: 0.5rem;
+}
+
+/* ------------------- _comment.html.erb ------------------------ */
+.comment {
+    border: solid 1px gray;
+    padding: 15px;
+    margin: 5px;
+    margin-left: 50px;
+    width: max-content;
+    padding-left: 60px;
+    padding-right: 60px;
+}
