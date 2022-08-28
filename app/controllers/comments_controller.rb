@@ -1,10 +1,16 @@
 class CommentsController < ApplicationController
  
-  # Accessed from /user/comments
+  
   def index
+    # Accessed from /user/comments
     @user = User.find(params[:user_id])
     @comments = @user.created_comments
     render "users/comments"
+  end
+
+  def show
+    @post = Post.find(params[:post_id])
+    redirect_to @post
   end
   
   def new
@@ -24,8 +30,12 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:notice] = "Successfully commented"
-      type = params[:parent_id] ? :replied_comment : :comment
-      link = post_comments_path(params[:post_id], @comment.id)
+
+      # the form submit includes a parameter :parent_id. If this parameter is set to nil,
+      # it is converted to an "" in the controller, which is TRUTHY
+      type = comment_params[:parent_id] == "" ? :comment : :replied_comment
+
+      link = post_path(params[:post_id])
       Notification.create_and_send(current_user, @post.creator, type, link)
     else
       flash[:alert] = "Failed to comment"

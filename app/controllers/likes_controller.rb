@@ -12,7 +12,7 @@ class LikesController < ApplicationController
       redirect_to post
     else
       comment = Comment.find(params[:likeable_id])
-      link = post_comments_path(comment.commentable_id, comment.id)
+      link = post_comment_path(comment.commentable, comment)
       type = :like_comment
       Notification.create_and_send(current_user, comment.creator, type, link)
       redirect_to comment.commentable

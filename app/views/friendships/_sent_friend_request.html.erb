@@ -1,4 +1,4 @@
 <div>
-    <p> You sent a request to <%= sent_friend_request.sender.username %></p>
+    <p> You sent a request to <%= sent_friend_request.receiver.username %></p>
     <%= button_to "Cancel", friendship_path(sent_friend_request.id), {method: :destroy} %>
 </div>

@@ -7,13 +7,13 @@ class Notification < ApplicationRecord
   MESSAGES = { comment: "has commented on your post",
                replied_comment: "has replied to your comment",
                like_post: "has liked your post",
-               like_comment: "has liked your comment",
-               sent_friend_request: "has sent you a friend request",
-               accepted_friend_request: "has accepted your friend request" }
+               like_comment: "has liked your comment" }
 
   def self.create_and_send(sender, receiver, type, link)
-    message = "#{sender.username} #{MESSAGES[type]}"
-    receiver.received_notifications.create(sender_id: sender.id, message: message, link: link)
+    if sender.id != receiver.id
+      message = "#{sender.username} #{MESSAGES[type]}"
+      receiver.received_notifications.create(sender_id: sender.id, message: message, link: link)
+    end
   end
 
   def set_to_seen

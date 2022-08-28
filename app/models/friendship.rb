@@ -8,7 +8,7 @@ class Friendship < ApplicationRecord
   # e.g: User A sends user B a friend request, and user B sends user A a request. 
   # User A accepts user B's request. Then User A's request should be deleted. 
   # User B shouldn't see it in their inbox.
-  def destroy_requests_after_accept(sender_id, receiver_id)
+  def self.destroy_requests_after_accept(sender_id, receiver_id)
     User.find(receiver_id).sent_friend_requests.where(receiver_id: sender_id).destroy_all
   end
 
