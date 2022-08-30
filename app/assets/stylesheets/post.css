@@ -1,0 +1,101 @@
+.post {
+    --main-border-radius: 6px;
+    --username-font-size: 14px;
+    --title-font-size: 1rem;
+    --body-font-size: 0.75rem;
+    --bottom-bar-font-size: 0.6rem;
+    --likes-font-size: 0.5rem;
+
+    display: grid;
+    /* using 1fr, 10fr results in weird behaviour */
+    grid-template-columns: 40px 660px;
+
+    border-radius: var(--main-border-radius);
+    margin: 10px;
+    width: 700px;
+    color: white;
+    background-color: #2A313F;
+}
+
+.post .user-info div {
+    font-size: var(--username-font-size);
+    font-weight: 200;
+}
+
+.post #likes {
+    grid-column: 1 / 2;
+
+    background-color: #334155;
+    border-radius: var(--main-border-radius) 0px 0px var(--main-border-radius);
+    padding: 10px;
+    font-size: var(--likes-font-size);
+}
+
+.post .right {
+    grid-column: 2 / 3;
+
+    display: grid;
+    grid-template-rows: min-content 5fr 1fr;
+    padding: 10px;
+}
+
+.post .user-info {
+    grid-row: 1 / 2;
+
+    background-color: #2A313F;
+    padding-bottom: 20px;
+}
+
+.post #edit-post {
+    grid-row: 2 / 3;
+
+    background-color: #2A313F;
+}
+
+.post .bottom-bar {
+    grid-row: 3 / 4;
+    background-color: #2A313F;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 2px;
+    border-top: 1px solid white;
+}
+
+.post .title {
+    font-weight: bold;
+    font-size: var(--title-font-size);
+    margin-bottom: 20px;
+    letter-spacing: 0.2px;
+}
+
+.post .body {
+    font-size: var(--body-font-size);
+    overflow-y: scroll;
+    max-height: 150px;
+    font-weight: 100;
+}
+
+.post .comments {
+    display: flex;
+    gap: 5px;
+
+}
+.post .comments p {
+    color: white;
+    vertical-align: -3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--bottom-bar-font-size);
+}
+
+svg {
+    color: white;
+}
+
+svg:hover {
+    color: grey;
+}
+

@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
   after_create do |user|
     Profile.create(user_id: user.id)
+    UserMailer.with(user: user).sign_up_email.deliver_now
   end
 
   # Include default devise modules. Others available are:
@@ -44,3 +45,4 @@ class User < ApplicationRecord
     sent_friends + received_friends
   end
 end
+

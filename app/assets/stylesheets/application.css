@@ -47,7 +47,34 @@
  body {
     line-height: 1;
     font-family: 'Noto Sans', sans-serif;
+    background-color: #171d26;
  }
+
+ ul {
+    list-style: none;
+ }
+
+ a {
+    text-decoration: none;
+    color: inherit;
+ }
+
+ textarea {
+    height: 150px;
+ }
+
+ input[type="submit"] {
+     width: max-content;
+     padding: 10px;
+ }
+
+ button {
+    appearance: none;
+    background: none;
+    border: none;
+    border: 0;
+}
+
 
  .navbar {
     height: 50px;
@@ -60,124 +87,32 @@
     justify-content: space-between;
  }
 
- a {
-    text-decoration: none;
-    color: inherit;
+
+ .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
  }
+
 
  .comment_form form {
-     margin: 15px;
-     display: flex;
-     flex-direction: column;
-     width: 450px;
-     gap: 5px;
-     border: solid 3px darkcyan;
-     padding: 10px;
- }
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    gap: 5px;
+    border: solid 3px darkcyan;
+    padding: 10px;
+}
 
- textarea {
-    height: 150px;
- }
-
- input[type="submit"] {
-     width: max-content;
-     padding: 10px;
- }
 
  .comments, .likes {
      font-size: small;
      color: darkblue;
  }
 
- button {
-     appearance: none;
-     background: none;
-     border: none;
- }
+ 
 
- /* ------------------- _like_dislike_panel.html.erb ------------------------ */
+ 
 
- .liked {
-     color: red;
- }
-
- .disliked {
-    color: blue;
-}
-
-/* ------------------- _post.html.erb ------------------------ */
-.post {
-    display: grid;
-    grid-template-columns: 1fr, 10fr;
-    grid-template-rows: 2fr, 6fr, 1fr;
-    grid-row-gap: 10px;
-
-    border-radius: 8px;
-
-    margin: 10px;
-    padding: 10px;
-    width: 400px;
-
-    color: white;
-    background-color: #2A313F;
-}
-
-.post #likes {
-    grid-column: 1 / 2;
-    grid-row: 1 / 4;
-
-    /* background-color: #334155; */
-    border: 1px solid #2A313F;
-    width: min-content;
-
-    font-size: 0.5rem;
-}
-
-.post .user-info {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-
-    background-color: #2A313F;
-
-    font-size: 0.6rem;
-}
-
-.post #edit-post {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-
-    background-color: #2A313F;
-}
-
-.post .bottom-bar {
-    grid-column: 2 / 3;
-    grid-row: 3 / 4;
-
-    background-color: #2A313F;
-
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.6rem;
-}
-
-.post .title {
-    font-weight: bold;
-    font-size: 1rem;
-    margin-bottom: 20px;
-}
-
-.post .body {
-    font-size: 0.5rem;
-}
-
-/* ------------------- _comment.html.erb ------------------------ */
-.comment {
-    border: solid 1px gray;
-    padding: 15px;
-    margin: 5px;
-    margin-left: 50px;
-    width: max-content;
-    padding-left: 60px;
-    padding-right: 60px;
-}
+ 

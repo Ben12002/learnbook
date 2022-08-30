@@ -1,0 +1,39 @@
+
+.like_dislike_panel {   
+    --dislike-color: blue;
+    --like-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.like_dislike_panel .liked {
+    color: var(--like-color);
+}
+
+.like_dislike_panel .disliked {
+    color: var(--dislike-color);
+}
+
+.like_dislike_panel p {
+    margin-bottom: 3px;
+}
+
+.like_dislike_panel button {
+    margin: 0px;
+    padding: 0px;
+}
+
+.like_dislike_panel .dislike {
+    stroke-width: 0.1rem;
+}
+
+.like_dislike_panel .like:hover {
+    color: var(--like-color);
+}
+
+.like_dislike_panel .dislike:hover {
+    color: var(--dislike-color);
+}

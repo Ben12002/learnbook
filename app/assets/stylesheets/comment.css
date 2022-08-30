@@ -1,0 +1,9 @@
+.comment {
+    border: solid 1px gray;
+    padding: 15px;
+    margin: 5px;
+    margin-left: 50px;
+    width: max-content;
+    padding-left: 60px;
+    padding-right: 60px;
+}
