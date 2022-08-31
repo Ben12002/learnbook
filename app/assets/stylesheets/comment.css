@@ -1,9 +1,51 @@
 .comment {
-    border: solid 1px gray;
+    --comment-background-color: #334155;
+    color: white;
+    border-left: solid 1px white;
     padding: 15px;
-    margin: 5px;
-    margin-left: 50px;
-    width: max-content;
-    padding-left: 60px;
-    padding-right: 60px;
+    max-width: 500px;
+    margin: 20px;
+    font-size: 1.6rem;
 }
+
+.comment .trash {
+    color: white
+}
+
+.comment .content {
+    display: grid;
+    grid-template-rows: min-content min-content min-content;
+    /* border: 1px solid red; */
+    padding: 12px;
+    grid-row-gap: 16px;
+    background-color: var(--comment-background-color);
+    border-radius: 6px;
+}
+
+.comment .user-info {
+    grid-row: 1 / 2;
+    font-size: 1.2rem;
+}
+
+.comment .body {
+    grid-row: 2 / 3;
+    padding: 6px;
+}
+
+.comment .bottom-bar {
+    grid-row: 3 / 4;
+    display: flex;
+    align-items: center;
+
+    display: flex;
+    gap: 10px;
+    padding: 3px;
+}
+
+.comment .like_dislike_frame .like_dislike_panel {
+    display: flex;
+    flex-direction: row;
+}
+
+
+

@@ -1,6 +1,6 @@
 
 .like_dislike_panel {   
-    --dislike-color: blue;
+    --dislike-color: #3485fa;
     --like-color: red;
     display: flex;
     flex-direction: column;

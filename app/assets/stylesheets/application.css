@@ -44,10 +44,16 @@
 	 display: block;
  }
 
+ html {
+    font-size: 62.5%;
+    font-weight: 100;
+ }
+
  body {
     line-height: 1;
     font-family: 'Noto Sans', sans-serif;
     background-color: #171d26;
+    color: white;
  }
 
  ul {
@@ -59,14 +65,10 @@
     color: inherit;
  }
 
- textarea {
-    height: 150px;
- }
-
- input[type="submit"] {
-     width: max-content;
-     padding: 10px;
- }
+ button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+}
 
  button {
     appearance: none;
@@ -95,22 +97,8 @@
  }
 
 
- .comment_form form {
-    margin: 15px;
-    display: flex;
-    flex-direction: column;
-    width: 450px;
-    gap: 5px;
-    border: solid 3px darkcyan;
-    padding: 10px;
-}
 
-
- .comments, .likes {
-     font-size: small;
-     color: darkblue;
- }
-
+ 
  
 
  

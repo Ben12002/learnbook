@@ -1,10 +1,11 @@
 .post {
     --main-border-radius: 6px;
-    --username-font-size: 14px;
-    --title-font-size: 1rem;
-    --body-font-size: 0.75rem;
-    --bottom-bar-font-size: 0.6rem;
-    --likes-font-size: 0.5rem;
+    --main-border-color: #434c59;
+    --username-font-size: 2rem;
+    --title-font-size: 3.1rem;
+    --body-font-size: 1.6rem;
+    --bottom-bar-font-size: 1.2rem;
+    --likes-font-size: 1rem;
 
     display: grid;
     /* using 1fr, 10fr results in weird behaviour */
@@ -15,6 +16,8 @@
     width: 700px;
     color: white;
     background-color: #2A313F;
+    line-height: 1.1;
+    /* border: 1px solid var(--main-border-color); */
 }
 
 .post .user-info div {
@@ -35,7 +38,7 @@
     grid-column: 2 / 3;
 
     display: grid;
-    grid-template-rows: min-content 5fr 1fr;
+    grid-template-rows: min-content 5fr min-content;
     padding: 10px;
 }
 
@@ -71,10 +74,27 @@
 
 .post .body {
     font-size: var(--body-font-size);
-    overflow-y: scroll;
-    max-height: 150px;
     font-weight: 100;
+    padding: 4px;
 }
+
+.post-thumbnail .body {
+    max-height: 200px;
+    overflow-y: scroll;
+    /* overflow-y: hidden; */
+    position: relative;
+}
+
+/* .post-thumbnail .body .after-body {
+    
+    height: 25px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, transparent, black);
+} */
+
 
 .post .comments {
     display: flex;
@@ -91,11 +111,18 @@
     font-size: var(--bottom-bar-font-size);
 }
 
-svg {
+.post .bottom-bar svg {
     color: white;
+    margin-top: 3px;
 }
 
 svg:hover {
     color: grey;
 }
+
+.post:hover {
+    border: 1px solid var(--main-border-color);
+}
+
+
 

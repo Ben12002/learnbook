@@ -2,7 +2,7 @@
 
 <ul>
     <% @posts.each do |post| %>
-        <li>
+        <li class="post-thumbnail">
             <%= render "shared/post", :post => post %>
         </li>
     <% end %>

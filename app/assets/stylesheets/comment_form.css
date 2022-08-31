@@ -1,0 +1,31 @@
+.comment_form form {
+    --comment-background-color: #334155;
+    --main-border-color: #434c59;
+    --button-background-color: #638abf;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    gap: 5px;
+    padding: 10px;
+    font-size: 1.6rem;
+}
+
+.comment_form input[type="submit"] {
+    width: max-content;
+    padding: 10px;
+    background-color: var(--button-background-color);
+    border: solid 1px var(--button-background-color);
+    border-radius: 4px;
+    color: white;
+    font-weight: 100;
+}
+
+.comment_form textarea {
+    height: 150px;
+    background-color: var(--comment-background-color);
+    color: white;
+    padding: 10px;
+    border: solid 1px var(--main-border-color);
+    border-radius: 6px;
+}

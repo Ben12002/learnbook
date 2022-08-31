@@ -4,14 +4,18 @@
             <%= form.hidden_field :creator_id, value: current_user.id %>
             <%= form.hidden_field :parent_id, value: parent_id %>
             <%= form.text_area :body %>
-            <%= form.submit %>
+            <div class="bottom-bar">
+                <%= form.submit "Comment" %>
+            </div>
         <% end %>
     <% else %>
         <%= form_with model: [post, Comment.new] do |form| %>
             <%= form.hidden_field :creator_id, value: current_user.id %>
             <%= form.hidden_field :parent_id, value: parent_id %>
             <%= form.text_area :body %>
-            <%= form.submit %>
+            <div class="bottom-bar">
+                <%= form.submit "Comment" %>
+            </div>
         <% end %>
     <% end %>
 </div>

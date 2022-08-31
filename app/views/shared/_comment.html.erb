@@ -2,31 +2,40 @@
 
     <!-- dom_id(comment) + "likes" is just used as a way to generate a unique ID that won't clash with the edit comment's turbo frame ID -->
     <!-- This was necessary due to the recursive nature of this view partial -->
-    <div class="likes">
-        <%= turbo_frame_tag (dom_id(comment) + "likes") do %>
-            <%= render "shared/like_dislike_panel", { likeable: comment, dislikeable: comment } %>
-        <% end %>
-    </div>
+        
+    <!-- Like dislike turbo frame used to be here -->
 
-    <%= turbo_frame_tag dom_id(comment) do %>
-        <p><%= comment.creator.username %><p>
-        <p><%= comment.body %></p>
-        <%= link_to "reply", new_post_comment_path(post.id, parent_id: comment.id), data: { turbo_frame: "_top" } %>
-        <% if current_user.id.to_i == comment.creator.id.to_i %>
-            <%= link_to "edit", edit_post_comment_path(post.id, comment.id) %>
 
-            <%= button_to post_comment_url(post.id, comment.id), {method: :delete, data: { turbo_frame: "_top" } } do %>
-                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
-                </svg>
+    <%= turbo_frame_tag dom_id(comment), class:"content" do %>
+        <div class="user-info">
+            <p><%= comment.creator.username %><p>
+        </div>
+
+        <div class="body">
+            <%= comment.body %>
+        </div>
+
+        <div class="bottom-bar">
+
+            <%= turbo_frame_tag (dom_id(comment) + "likes"), class:"like_dislike_frame" do %>
+                <%= render "shared/like_dislike_panel", { likeable: comment, dislikeable: comment } %>
             <% end %>
-        <% end %>
+
+            <%= link_to "reply", new_post_comment_path(post.id, parent_id: comment.id), data: { turbo_frame: "_top" } %>
+
+            <% if current_user.id.to_i == comment.creator.id.to_i %>
+                <%= link_to "edit", edit_post_comment_path(post.id, comment.id) %>
+
+                <%= button_to post_comment_url(post.id, comment.id), {method: :delete, data: { turbo_frame: "_top" } } do %>
+                    <svg class="trash" style="width:20px;height:20px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
+                    </svg>
+                <% end %>
+            <% end %>
+
+        </div>
     <% end %>
 
-    
-    <p> parent_id: <%= parent_id %> </p>
-    <p> comment.id: <%= comment.id %> </p>
-    
 
     <% if parent_id %>
         <% if (parent_id.to_i == comment.id.to_i) %>
@@ -36,12 +45,13 @@
         <% end %>
     <% end %>
 
-    <% comment.comments.each do |child| %>
-        <ul class="child">
-            <%= render partial: 'shared/comment', locals: { :post => post, comment: child, parent_id: parent_id } %>
-        </ul>
+
+    <% comment.comments.each do |child| %> 
+        <%= render partial: 'shared/comment', locals: { :post => post, comment: child, parent_id: parent_id } %>
     <% end %>
+    
 </div>
+
 
 
 

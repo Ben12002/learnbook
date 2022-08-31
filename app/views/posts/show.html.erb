@@ -1,12 +1,12 @@
-<h1>Posts#show</h1>
-
-<%= link_to "home", root_path %>
 <%= render "shared/post", :post => @post %>
+
 <%= render "shared/comment_form", :post => @post, :parent_id => @parent_id %>
 
-<% @post.top_level_comments.each do |comment|%>
-    <%= render "shared/comment", { :comment => comment, :post => @post, :parent_id => @parent_id } %>
-<% end %>
+<div class="comment-section">
+    <% @post.top_level_comments.each do |comment|%>
+        <%= render "shared/comment", { :comment => comment, :post => @post, :parent_id => @parent_id } %>
+    <% end %>
+</div>
 
 
 
