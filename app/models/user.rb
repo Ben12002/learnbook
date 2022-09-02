@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
   after_create do |user|
     Profile.create(user_id: user.id)
+    Profile.avatar.attach()
     UserMailer.with(user: user).sign_up_email.deliver_now
   end
 
@@ -44,5 +45,7 @@ class User < ApplicationRecord
   def friends
     sent_friends + received_friends
   end
+
+  
 end
 

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :notifications, only: [:index]
   end
 
+  resources :profiles, only: [:edit, :update]
+
   resources :friendships, only: [:index, :create, :update, :destroy]
 
   resources :likes, only: [:create, :destroy]

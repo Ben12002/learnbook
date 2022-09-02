@@ -1,7 +1,5 @@
 <%= turbo_frame_tag "profile-window" do %>
     <h1>_profile</h1>
-    <% if current_user.id.to_i == user.id.to_i %>
-    <% end %>
 
     <%= user.profile.bio %> 
 

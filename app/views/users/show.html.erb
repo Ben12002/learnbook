@@ -1,10 +1,28 @@
-<div class="profile-banner">
-</div>
+<div class="user-page-top">
+    <div class="profile-banner-container">
+        <%= image_tag @profile.banner %>
+    </div>
+    <div class="avatar-container">
+        <%= image_tag @profile.avatar.variant(:large_thumbnail) %>
+        <p><%= "#{@profile.first_name} #{@profile.last_name} (@#{@profile.user.username})" %></p>
+        
+    </div>
 
-<div class = "tabs-bar">
-    <%= link_to "Profile", @user, data: { turbo_frame: "profile-window" } %>
-    <%= link_to "Comments", user_comments_path(@user.id), data: { turbo_frame: "profile-window" } %>
-    <%= link_to "Posts", user_posts_path(@user.id), data: { turbo_frame: "profile-window" } %>
+    <div class="edit-profile">
+        <% if @user.id.to_i == current_user.id.to_i %>
+            <%= link_to edit_profile_path(current_user.profile.id) do %>
+                <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M14.06,9L15,9.94L5.92,19H5V18.08L14.06,9M17.66,3C17.41,3 17.15,3.1 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18.17,3.09 17.92,3 17.66,3M14.06,6.19L3,17.25V21H6.75L17.81,9.94L14.06,6.19Z" />
+                </svg>
+            <% end %>
+        <% end %>
+    </div>
+
+    <div class = "tabs-bar">
+        <%= link_to "Profile", @user, data: { turbo_frame: "profile-window" } %>
+        <%= link_to "Comments", user_comments_path(@user.id), data: { turbo_frame: "profile-window" } %>
+        <%= link_to "Posts", user_posts_path(@user.id), data: { turbo_frame: "profile-window" } %>
+    </div>
 </div>
 
 <%= turbo_frame_tag "profile-window" do %>
