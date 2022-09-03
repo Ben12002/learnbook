@@ -14,8 +14,6 @@ class Post < ApplicationRecord
    has_many :dislikes, as: :dislikeable, :dependent => :destroy
    has_many :dislikers, through: :dislikes
 
-  
-
 
   def top_level_comments
     self.comments.where(parent_id: nil)

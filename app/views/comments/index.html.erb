@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "profile-window" do %>
+    <% @comments.each do |comment| %>
+        <%= render "shared/comment_thumbnail", post: comment.commentable, comment: comment %>
+    <% end %>
+<% end %>

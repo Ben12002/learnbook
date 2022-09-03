@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
     # Accessed from /user/comments
     @user = User.find(params[:user_id])
     @comments = @user.created_comments
-    render "users/comments"
   end
 
   def show

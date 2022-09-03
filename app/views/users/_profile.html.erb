@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "profile-window" do %>
-    <h1>_profile</h1>
-
-    <%= user.profile.bio %> 
-
+    <div class="bio-box">
+        <p class="about-me">About me:</p>
+        <p><%= user.profile.bio %></p>
+    </div>
 <% end %>

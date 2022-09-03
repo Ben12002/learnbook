@@ -1,8 +1,9 @@
 class User < ApplicationRecord
 
   after_create do |user|
-    Profile.create(user_id: user.id)
-    Profile.avatar.attach()
+    profile = Profile.create(user_id: user.id)
+    profile.attach_default_avatar
+    profile.attach_default_banner
     UserMailer.with(user: user).sign_up_email.deliver_now
   end
 

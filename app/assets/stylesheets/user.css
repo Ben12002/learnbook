@@ -5,7 +5,6 @@
     width: 100%;
 }
 .user-page-top .profile-banner-container {
-    
     height: 300px;
 }
 
@@ -32,10 +31,36 @@
     left:var(--avatar-left-offset);
 }
 
-.user-page-top .avatar-container p {
+.user-page-top .avatar-container .beside-avatar {
     position: absolute;
     left: calc(var(--avatar-left-offset) + var(--avatar-dimensions));
     margin: 20px;
     font-size: 3rem;
+    display: flex;
+    gap: 15px;
 }
+
+.user-page-mid {
+    --tabs-bar-background-color: #171d26;
+    display: flex;
+    margin: 30px;
+    margin-top: 80px;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+.user-page-mid .tabs-bar {
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-color: var(--tabs-bar-background-color);
+    padding: 25px;
+    
+    width: fit-content;
+}
+
 
