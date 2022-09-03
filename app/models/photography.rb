@@ -1,0 +1,2 @@
+class Photography < Category
+end

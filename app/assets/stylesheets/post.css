@@ -49,7 +49,7 @@
     padding-bottom: 20px;
 }
 
-.post #edit-post {
+.post .title-body {
     grid-row: 2 / 3;
 
     background-color: #2A313F;
