@@ -43,11 +43,11 @@
  article, aside, details, figcaption, figure, 
  footer, header, hgroup, menu, nav, section {
 	 display: block;
+    font-weight: 100;
  }
 
  html {
     font-size: 62.5%;
-    font-weight: 100;
  }
 
  body {
@@ -59,20 +59,20 @@
  }
 
  ul {
-    list-style: none;
- }
+   list-style: none;
+}
 
  a {
     text-decoration: none;
     color: inherit;
  }
 
- button, input, select, textarea {
+ button, input, select, textarea, input[type="submit"] {
     font-family: inherit;
     font-size: 100%;
 }
 
- button {
+ button, input[type="submit"] {
     appearance: none;
     background: none;
     border: none;
@@ -101,6 +101,10 @@
     flex-direction: column;
     align-items: center;
  }
+
+ 
+
+
 
 
 

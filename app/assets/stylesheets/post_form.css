@@ -1,0 +1,33 @@
+.post-form {
+    background-color: white;
+    padding: 20px;
+    color: black;
+    border-radius: 8px;
+ }
+
+ .post-form form {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+ }
+
+ .post-form input[type="text"] {
+     margin-bottom: 30px;
+     margin-top: 10px
+ }
+
+ .post-form input[type="submit"] {
+     background-color: #e6e6e6;
+     width: fit-content;
+     padding: 15px;
+     border-radius: 6px;
+     font-weight: 200;
+     margin-top: 20px;
+     margin-left: auto;
+ }
+
+ .post-form ul {
+     list-style-type: disc;
+     list-style-position: outside;
+     list-style-image: none;
+ }

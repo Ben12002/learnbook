@@ -1,7 +1,8 @@
-<%= form_with model: @post do |form| %>
-    <%= form.label :title, "Title:" %>
-    <%= form.text_field :title %>
-    <%= form.label :title, "Body:" %>
-    <%= form.text_area :body %>
-    <%= form.submit%>
-<% end %>
+<div class="post-form">
+    <%= form_with model: @post do |form| %>
+        <%= form.label :title, "Title:" %>
+        <%= form.text_field :title %>
+        <%= form.rich_text_area :body %>
+        <%= form.submit "Post"%>
+    <% end %>
+</div>

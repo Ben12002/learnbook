@@ -10,10 +10,11 @@ class Post < ApplicationRecord
   has_many :likes, as: :likeable, :dependent => :destroy
   has_many :likers, through: :likes
 
-   # A post can be disliked; therefore it has many dislikes
-   has_many :dislikes, as: :dislikeable, :dependent => :destroy
-   has_many :dislikers, through: :dislikes
+  # A post can be disliked; therefore it has many dislikes
+  has_many :dislikes, as: :dislikeable, :dependent => :destroy
+  has_many :dislikers, through: :dislikes
 
+  has_rich_text :body
 
   def top_level_comments
     self.comments.where(parent_id: nil)
