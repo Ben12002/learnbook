@@ -2,7 +2,6 @@
     --navbar-background-color: #27272a;
     --user-button-color: black;
     --drop-down-list-background-color: black;
-    --hover-color: #636363;
     height: 70px;
     background-color: var(--navbar-background-color);
     display: flex;
