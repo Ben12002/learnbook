@@ -1,0 +1,70 @@
+.sign-up-page, .log-in-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.sign-up-page h2, .log-in-page h2 {
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+.sign-up-form, .log-in-form {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    gap: 12px;
+    align-items: center;
+    background-color: #2A313F;
+    margin-top: 20px;
+    font-weight: 100;
+    border-radius: 6px;
+}
+
+.sign-up-form form, .log-in-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.sign-up-form button, .log-in-form button, 
+.sign-up-form input[type="submit"], .log-in-form input[type="submit"], 
+.sign-up-form .alternate, .log-in-form .alternate{
+    color: var(--main-font-color);
+    font-weight: 100;
+    border: solid 1px var(--main-font-color);
+    padding: 10px;
+    border-radius: 4px;
+
+}
+
+.sign-up-form button:hover, .log-in-form button:hover, 
+.sign-up-form input[type="submit"]:hover, .log-in-form input[type="submit"]:hover, 
+.sign-up-form .alternate:hover, .log-in-form .alternate:hover {
+    background-color: rgb(255,255,255,0.5);
+}
+
+.sign-up-form .divider, .log-in-form .divider {
+    width: 100%;
+    border-top: 1px solid var(--main-font-color);
+    height: 1px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.devise-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.sign-up-form .devise-links {
+    gap: 20px;
+}
+
+.devise-links a {
+    width: fit-content;
+}

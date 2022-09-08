@@ -1,6 +1,11 @@
 <!-- <%= link_to "New Post", new_post_path, class: "new-post" %> -->
 
-<%= link_to "New Post", new_post_path, class: "new-post" %>
+<%= link_to new_post_path, class: "new-post" do %>
+    <p>Create post</p>
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+    </svg>
+<% end %>
 
 <ul>
     <% @posts.each do |post| %>
