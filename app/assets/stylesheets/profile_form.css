@@ -1,0 +1,15 @@
+.profile-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-form form div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.profile-form input[type="submit"] {
+    color: var(--main-font-color);
+}

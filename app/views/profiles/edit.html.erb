@@ -1,18 +1,30 @@
-<%= form_with model: @profile do |form| %>
-    <%= form.label :first_name, "First Name:"%>
-    <%= form.text_field :first_name %>
+<div class="profile-form">
+    <%= form_with model: @profile do |form| %>
+        <div>
+            <%= form.label :first_name, "First Name:"%>
+            <%= form.text_field :first_name %>
+        </div>
 
-    <%= form.label :last_name, "Last Name:"%>
-    <%= form.text_field :last_name %>
+        <div>
+            <%= form.label :last_name, "Last Name:"%>
+            <%= form.text_field :last_name %>
+        </div>
 
-    <%= form.label :bio, "Bio:"%>
-    <%= form.text_area :bio %>
+        <div>
+            <%= form.label :bio, "Bio:"%>
+            <%= form.text_area :bio %>
+        </div>
 
-    <%= form.label :avatar, "Avatar:"%>
-    <%= form.file_field :avatar %>
+        <div>
+            <%= form.label :avatar, "Avatar:"%>
+            <%= form.file_field :avatar %>
+        </div>
 
-    <%= form.label :banner, "Banner:"%>
-    <%= form.file_field :banner %>
+        <div>
+            <%= form.label :banner, "Banner:"%>
+            <%= form.file_field :banner %>
+        </div>
 
-    <%= form.submit %>
-<% end %>
+        <%= form.submit %>
+    <% end %>
+</div>
