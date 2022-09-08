@@ -1,0 +1,60 @@
+.navbar {
+    --navbar-background-color: #27272a;
+    --user-button-color: black;
+    --drop-down-list-background-color: black;
+    --hover-color: #636363;
+    height: 70px;
+    background-color: var(--navbar-background-color);
+    display: flex;
+    align-items: center;
+    padding: 0px 30px;
+    justify-content: space-between;
+    font-weight: 100;
+ }
+
+.navbar .right {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 25px;
+}
+
+.navbar .user-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--user-button-color);
+    padding: 10px;
+}
+
+.navbar .user-button:hover {
+    border: solid 1px var(--hover-color);
+}
+
+ .navbar .hidden {
+    visibility: hidden;
+}
+
+.navbar .drop-down {
+    position: relative;
+
+}
+
+.navbar .drop-down .list {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: max-content;
+    padding: 10px;
+    background-color: var(--drop-down-list-background-color);
+}
+
+.navbar svg, .navbar p {
+    color: white;
+}
+
+
+.navbar .list div:hover, .navbar svg:hover {
+    color: var(--hover-color)
+}

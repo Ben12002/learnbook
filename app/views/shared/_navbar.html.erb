@@ -3,29 +3,47 @@
   			<h1>LearnBook</h1>
   		<% end %>
 
-      <% if user_signed_in? %>
-        <%= link_to current_user.username, edit_user_registration_path  %>
+      <div class="right">
+        <% if user_signed_in? %>
 
-        <%= link_to "profile", user_path(current_user.id)  %>
+          <%= link_to user_notifications_path(current_user.id) do %>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21" />
+            </svg>
+          <% end %>
 
-        <!-- https://github.com/heartcombo/devise/issues/5458 redirecting after logout with devise -->
-        <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %>
+          <%= link_to friendships_path do %>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M16 17V19H2V17S2 13 9 13 16 17 16 17M12.5 7.5A3.5 3.5 0 1 0 9 11A3.5 3.5 0 0 0 12.5 7.5M15.94 13A5.32 5.32 0 0 1 18 17V19H22V17S22 13.37 15.94 13M15 4A3.39 3.39 0 0 0 13.07 4.59A5 5 0 0 1 13.07 10.41A3.39 3.39 0 0 0 15 11A3.5 3.5 0 0 0 15 4Z" />
+            </svg>
+          <% end %>
 
-        <%= link_to user_notifications_path(current_user.id) do %>
-          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21" />
-          </svg>
+          <!-- button that toggles class on drop-down-list to show/hide -->
+          <div class="drop-down" data-controller="toggle" data-toggle-invisible-class="hidden">
+            <button data-action="toggle#click">
+              <div class="user-button">
+                <%= image_tag current_user.profile.avatar.variant(:small_thumbnail) %>
+
+                <p><%= current_user.username %></p>
+
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M7,10L12,15L17,10H7Z" />
+                </svg>
+              </div>
+            </button>
+
+            <div class="list hidden" data-toggle-target="toggleable">
+              <div class="hidden" data-toggle-target="toggleable"><%= link_to "Account Settings", edit_user_registration_path %></div>
+              <div class="hidden" data-toggle-target="toggleable"><%= link_to "Profile", user_path(current_user.id) %></div>
+              <!-- https://github.com/heartcombo/devise/issues/5458 redirecting after logout with devise -->
+              <div class="hidden" data-toggle-target="toggleable"><%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %></div>
+            </div>
+          </div>
+
+        <% else %>
+          <%= link_to "Sign in", user_session_path  %>
+          <%= link_to "Sign up", new_user_registration_path  %>
         <% end %>
-
-        <%= link_to friendships_path do %>
-          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M16 17V19H2V17S2 13 9 13 16 17 16 17M12.5 7.5A3.5 3.5 0 1 0 9 11A3.5 3.5 0 0 0 12.5 7.5M15.94 13A5.32 5.32 0 0 1 18 17V19H22V17S22 13.37 15.94 13M15 4A3.39 3.39 0 0 0 13.07 4.59A5 5 0 0 1 13.07 10.41A3.39 3.39 0 0 0 15 11A3.5 3.5 0 0 0 15 4Z" />
-          </svg>
-        <% end %>
-
-      <% else %>
-        <%= link_to "Sign in", user_session_path  %>
-        <%= link_to "Sign up", new_user_registration_path  %>
-      <% end %>  
+      </div>
 </div>
 
