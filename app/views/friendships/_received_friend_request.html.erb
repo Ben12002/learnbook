@@ -1,5 +1,4 @@
-<div>
-    <p><%= received_friend_request.sender.username %> has sent you a friend request</p>
-    <%= button_to "Accept", friendship_path(received_friend_request.id), {method: :patch} %>
-    <%= button_to "Ignore", friendship_path(received_friend_request.id), {method: :destroy} %>
-</div>
+<%= render "shared/user_thumbnail", user: received_friend_request.sender %>
+<%= button_to "Accept", friendship_path(received_friend_request.id), {method: :patch} %>
+<%= button_to "Ignore", friendship_path(received_friend_request.id), {method: :destroy} %>
+

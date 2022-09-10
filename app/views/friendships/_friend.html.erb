@@ -1,5 +1,3 @@
-<div>
-    <p><%= friend.username %></p>
-    <%= button_to "Unfriend", friendship_path(Friendship.friendship_given_friend(current_user, friend).id), { method: :delete } %>
+<%= render "shared/user_thumbnail", user: friend %>
+<%= button_to "Unfriend", friendship_path(Friendship.friendship_given_friend(current_user, friend).id), { method: :delete } %>
         
-</div>

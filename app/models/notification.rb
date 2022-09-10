@@ -11,7 +11,7 @@ class Notification < ApplicationRecord
 
   def self.create_and_send(sender, receiver, type, link)
     if sender.id != receiver.id
-      message = "#{sender.username} #{MESSAGES[type]}"
+      message = "#{MESSAGES[type]}"
       receiver.received_notifications.create(sender_id: sender.id, message: message, link: link)
     end
   end

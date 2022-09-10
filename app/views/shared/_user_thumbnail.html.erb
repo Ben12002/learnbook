@@ -1,0 +1,6 @@
+<%= link_to user do %>
+    <div class="user-thumbnail">
+        <%= image_tag user.profile.avatar.variant(:small_thumbnail) %>
+        <%= user.username %>
+    </div>
+<% end %>

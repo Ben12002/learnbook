@@ -1,0 +1,37 @@
+.friend {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+    background-color: #2A313F;
+    padding: 15px;
+}
+
+.friend .user-thumbnail {
+    margin-right: 25px;
+}
+
+.friend button {
+    color: var(--main-font-color);
+}
+
+.friend button:hover {
+    color: var(--hover-color);
+}
+
+.friends-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.friends-page .section {
+    margin: 30px;
+}
+
+.friends-page h1 {
+    border-bottom: solid 1px white;
+    font-weight: 100;
+    padding: 3px;
+}

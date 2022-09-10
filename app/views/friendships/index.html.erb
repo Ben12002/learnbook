@@ -1,45 +1,49 @@
-<h1>Received Friend Requests:</h1>
+<div class="friends-page">
+    <div class="section">
+        <h1>Received Friend Requests:</h1>
 
-<ul>
-    <% @received_friend_requests.each do |received_friend_request| %>
-        <li>
-            <%= render "friendships/received_friend_request", received_friend_request: received_friend_request %>
-        </li>
-    <% end %>
-</ul>
+        <ul class="received-friend-requests">
+            <% @received_friend_requests.each do |received_friend_request| %>
+                <li class="received-friend-request friend">
+                    <%= render "friendships/received_friend_request", received_friend_request: received_friend_request %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 
-<br>
+    <div class="section">
+        <h1>Sent Friend Requests:</h1>
 
-<h1>Sent Friend Requests:</h1>
+        <ul class="sent-friend-requests">
+            <% @sent_friend_requests.each do |sent_friend_request| %>
+                <li class="sent-friend-request friend">
+                    <%= render "friendships/sent_friend_request", sent_friend_request: sent_friend_request %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 
-<ul>
-    <% @sent_friend_requests.each do |sent_friend_request| %>
-        <li>
-            <%= render "friendships/sent_friend_request", sent_friend_request: sent_friend_request %>
-        </li>
-    <% end %>
-</ul>
+    <div class="section">
+        <h1>Friends:</h1>
 
-<br>
+        <ul class="friends">
+            <% @friends.each do |friend| %>
+                <li class="friend">
+                    <%= render "friendships/friend", friend: friend %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 
-<h1>Friends:</h1>
+    <div class="section">
+        <h1>Discover Users:</h1>
 
-<ul>
-    <% @friends.each do |friend| %>
-        <li>
-            <%= render "friendships/friend", friend: friend %>
-        </li>
-    <% end %>
-</ul>
-
-<br>
-
-<h1>Discover Users:</h1>
-
-<ul>   
-    <% @users.each do |user| %>
-        <li>
-            <%= render "friendships/discover_user", user: user%>
-        </li>
-    <% end %>
-</ul>
+        <ul class="discover-users">   
+            <% @users.each do |user| %>
+                <li class="discover-user friend">
+                    <%= render "friendships/discover_user", user: user %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>

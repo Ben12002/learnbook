@@ -1,13 +1,26 @@
-<ul class="notification">
-    <% @notifications.each do |notification| %>
-        <% if notification.seen %>
-            <li class="seen">
-                <%= render "notifications/notification", notification: notification%>
-            </li>
-        <% else %>
-            <li class="unseen">
-                <%= render "notifications/notification", notification: notification%>
-            </li>
-        <% end %>
-    <% end %>
-</ul>
+<div class="notifications">
+
+    <div class="section">
+        <h1>New Notifications</h1>
+
+        <ul class="notifications">
+            <% @notifications.filter{ |notification| !notification.seen }.each do |notification| %>
+                <li class="notification">
+                    <%= render "notifications/notification", notification: notification, user: notification.sender %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>Old Notifications</h1>
+
+        <ul class="notifications">
+            <% @notifications.filter{ |notification| notification.seen }.each do |notification| %>
+                <li class="notification">
+                    <%= render "notifications/notification", notification: notification, user: notification.sender %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
