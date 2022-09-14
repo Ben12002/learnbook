@@ -11,8 +11,11 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if flash[:notice] %>
+      <p class="notice"><%= notice %></p>
+    <% elsif flash[:alert] %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
     <%= render "shared/navbar" %>
     <div class="main">
       <%= yield %>

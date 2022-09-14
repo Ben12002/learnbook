@@ -112,6 +112,24 @@
     gap: 10px;
  }
 
+ .notice, .alert {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: var(--main-font-color);
+   padding: 25px;
+   font-size: 2rem;
+   font-weight: 100;
+}
+
+.notice {
+   background-color: green;
+}
+
+.alert {
+   background-color: red;
+}
+
  
  
 
