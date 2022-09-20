@@ -16,8 +16,6 @@ class Post < ApplicationRecord
 
   has_rich_text :body
 
-  belongs_to :category
-
   def top_level_comments
     self.comments.where(parent_id: nil)
   end
