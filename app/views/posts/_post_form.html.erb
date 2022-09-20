@@ -1,8 +1,5 @@
 <div class="post-form">
     <%= form_with model: @post do |form| %>
-        <%= form.label :category, "Post to:" %>
-        <%= form.select :category_id , @categories.map {|category| [category.type, category.id] } %>
-
         <%= form.label :title, "Title:" %>
         <%= form.text_field :title %>
 
