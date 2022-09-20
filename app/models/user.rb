@@ -4,9 +4,9 @@ class User < ApplicationRecord
     profile = Profile.create(user_id: user.id)
     profile.attach_default_avatar
     profile.attach_default_banner
-    if user.email
-      UserMailer.with(user: user).sign_up_email.deliver_now
-    end
+    # if user.email
+    #   UserMailer.with(user: user).sign_up_email.deliver_now
+    # end
   end
 
   # Include default devise modules. Others available are:
