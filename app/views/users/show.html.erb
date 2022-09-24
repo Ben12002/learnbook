@@ -3,7 +3,7 @@
         <%= image_tag @profile.banner %>
     </div>
     <div class="avatar-container">
-        <%= image_tag @profile.avatar.variant(:large_thumbnail) %>
+        <%= image_tag @profile.avatar %>
         <div class="beside-avatar">
             <p><%= "#{@profile.first_name} #{@profile.last_name} (@#{@profile.user.username})" %></p>
             <div class="edit-profile">
