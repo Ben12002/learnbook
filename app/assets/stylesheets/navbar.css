@@ -57,3 +57,9 @@
 .navbar .list div:hover, .navbar svg:hover {
     color: var(--hover-color)
 }
+
+.navbar .user-button img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+}
