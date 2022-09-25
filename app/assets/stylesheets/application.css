@@ -135,6 +135,11 @@
    background-color: red;
 }
 
+.user-thumbnail img {
+   height: 30px;
+   width: 30px;
+   object-fit: cover;
+}
  
  
 
