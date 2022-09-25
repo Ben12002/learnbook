@@ -1,3 +1,4 @@
+[Try out LearnBook! (live link)](https://pure-anchorage-92143.herokuapp.com/)
 LearnBook is a social media web application built with Ruby on Rails.
 
 LearnBook includes the core features of a social media app:
