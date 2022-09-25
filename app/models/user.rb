@@ -38,8 +38,8 @@ class User < ApplicationRecord
   has_many :received_notifications, foreign_key: :receiver_id, class_name: "Notification", :dependent => :destroy
   
   # Friend requests
-  has_many :sent_friend_requests, ->{ where pending: true}, class_name: "Friendship", foreign_key: :sender_id
-  has_many :received_friend_requests, ->{ where pending: true}, class_name: "Friendship", foreign_key: :receiver_id
+  has_many :sent_friend_requests, ->{ where pending: true}, class_name: "Friendship", foreign_key: :sender_id, :dependent => :destroy
+  has_many :received_friend_requests, ->{ where pending: true}, class_name: "Friendship", foreign_key: :receiver_id, :dependent => :destroy
 
   # Each user can have many friends and can be a friend to many users
   # https://stackoverflow.com/questions/37244283/how-to-model-a-mutual-friendship-in-rails
