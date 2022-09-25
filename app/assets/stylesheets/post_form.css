@@ -1,29 +1,43 @@
 .post-form {
-    background-color: white;
+    --post-form-bg-color: #2A313F;
+    --post-form-text-color: white;
+    background-color: var(--post-form-bg-color);
     padding: 20px;
-    color: black;
+    color: white;
+    font-weight: 100;
     border-radius: 8px;
+    margin-top: 50px;
  }
 
  .post-form form {
     display: flex;
     flex-direction: column;
-    align-content: flex-end;
+    align-items: center;
+    gap: 15px;
  }
 
- .post-form input[type="text"] {
-     margin-bottom: 30px;
-     margin-top: 10px
- }
+ .post-form input[type="text"], .post-form textarea{
+    border: solid 1px #434c59;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 0;
+    width: 80%;
 
+    appearance: none;
+    background-color: var(--post-form-bg-color);
+    color: var(--post-form-text-color);
+ }
+ 
  .post-form input[type="submit"] {
      background-color: #e6e6e6;
      width: fit-content;
-     padding: 15px;
+     padding: 6px 20px;
      border-radius: 6px;
      font-weight: 200;
-     margin-top: 20px;
-     margin-left: auto;
+ }
+
+ .post-form input[type="file"] {
+     margin: 15px;
  }
 
  .post-form ul {

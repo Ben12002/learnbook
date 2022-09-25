@@ -63,3 +63,10 @@
     width: 30px;
     object-fit: cover;
 }
+
+.navbar h1 {
+    background: -webkit-linear-gradient(0deg,rgb(208, 22, 224), rgb(76, 64, 247));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 400;
+}

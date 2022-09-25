@@ -12,7 +12,7 @@
     grid-template-columns: 40px 660px;
 
     border-radius: var(--main-border-radius);
-    margin: 10px;
+    margin: 25px;
     width: 700px;
     color: white;
     background-color: #2A313F;
@@ -78,6 +78,10 @@
     padding: 4px;
 }
 
+.post .body img {
+    max-width: 100%;
+}
+
 .post-thumbnail .body {
     max-height: 200px;
     overflow-y: scroll;
@@ -120,8 +124,20 @@ svg:hover {
     color: grey;
 }
 
-.post:hover {
+.post {
     border: 1px solid var(--main-border-color);
+}
+
+.post:hover {
+    border: 1px solid var( --hover-color);
+}
+
+.post .user-info img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: -5px;
 }
 
 

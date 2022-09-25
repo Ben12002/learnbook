@@ -1,8 +1,9 @@
 #profile-window .bio-box {
     width: 700px;
+    font-weight: 100;
 }
 
-#profile-window .bio-box .about-me {
+#profile-window .bio-box .about-me{
     margin-bottom: 20px;
     font-size: 2rem;
     font-weight: 400;

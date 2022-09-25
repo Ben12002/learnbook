@@ -1,0 +1,18 @@
+.footer {
+    background-color: #10131a;
+    color: white;
+    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    margin-top: auto; 
+    height: 50px; 
+}
+
+.footer a {
+    background: -webkit-linear-gradient(0deg,rgb(208, 22, 224), rgb(15, 0, 226));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

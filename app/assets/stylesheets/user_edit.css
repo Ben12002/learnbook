@@ -1,7 +1,15 @@
 .user-edit form {
+    --user-form-bg-color: #2A313F;
+    --user-form-text-color: white;
+
+    background-color: var(--user-form-bg-color);
+    color: var(--user-form-text-color);
+    border-radius: 8px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 20px;
     font-weight: 100;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -10,12 +18,32 @@
 .user-edit form div {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    width: 90%;
+    gap: 5px;
+}
+
+.user-edit input {
+    background-color: var(--profile-form-bg-color);
+    color: var(--profile-form-text-color);
+    border: solid 1px #434c59;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 0;
+    font-weight: 100;
+    appearance: none;
 }
 
 .user-edit input[type="submit"] {
     color: var(--main-font-color);
     margin-bottom: 30px;
+    border: solid 1px #434c59;
+    border-radius: 6px;
+    padding: 10px 20px;
+    width: max-content;
+}
+
+.profile-form input[type="submit"]:hover {
+    border: solid 1px var(--hover-color);
 }
 
 .user-edit-links {
@@ -32,4 +60,8 @@
 
 .user-edit-links a:hover, .user-edit-links button:hover, .user-edit input[type="submit"]:hover {
     color: var(--hover-color);
+}
+
+.user-edit em, .user-edit i {
+    font-size: 1.3rem;
 }

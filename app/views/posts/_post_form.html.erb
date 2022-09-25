@@ -1,10 +1,12 @@
 <div class="post-form">
     <%= form_with model: @post do |form| %>
-        <%= form.label :title, "Title:" %>
-        <%= form.text_field :title %>
 
-        <%= form.text_area :body %>
+        <%= form.text_field :title, placeholder: "Title" %>
 
+        <%= form.text_area :body, placeholder: "Body", cols: 50, rows: 7 %>
+
+        <%= form.file_field :image %>
+    
         <%= form.submit "Post"%>
     <% end %>
 </div>

@@ -9,9 +9,7 @@
 
         <div class="right">
             <div class="user-info">
-                <div>
-                    <%= post.creator.username %>
-                </div>
+                <%= render "shared/user_thumbnail", user: post.creator %>
             </div>
 
             <div class="title-body">
@@ -20,6 +18,9 @@
                 </div>
 
                 <div class="body">
+                    <% if post.image.attached? %>
+                         <%= image_tag post.image %> 
+                    <% end %>
                     <%= post.body %>
                     <p class="after-body"></p>
                 </div>

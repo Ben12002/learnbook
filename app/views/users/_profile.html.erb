@@ -1,6 +1,10 @@
 <%= turbo_frame_tag "profile-window" do %>
     <div class="bio-box">
         <p class="about-me">About me:</p>
-        <p><%= user.profile.bio %></p>
+        <% if user.profile.bio == "" %>
+            <p>Your bio goes here, Be sure to write one!</p>
+        <% else %>
+            <p><%= user.profile.bio %></p>
+        <% end %>
     </div>
 <% end %>

@@ -34,6 +34,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.created_posts.build(post_params)
+    @post.image.attach(post_params[:image])
     if @post.save
       redirect_to @post
     else
@@ -49,6 +50,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update(post_params)
+      @post.image.attach(post_params[:image])
       redirect_to @post
     else
       render :edit, status: :unprocessable_entity
@@ -71,6 +73,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :image)
   end
 end
